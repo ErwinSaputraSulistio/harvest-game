@@ -1,0 +1,229 @@
+// IMPORTS
+@import url("https://fonts.googleapis.com/css2?family=Nerko+One&display=swap");
+
+// MIXINS
+@mixin container {
+  height: 100%;
+  margin: 0;
+  width: 100vw;
+}
+@mixin flex-centerize($direction, $align, $justify) {
+  align-items: $align;
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+}
+@mixin font($color, $size, $weight) {
+  color: $color;
+  font-family: "Nerko One", cursive;
+  font-size: $size;
+  font-weight: $weight;
+}
+@mixin font-border($width) {
+  -webkit-text-stroke-width: $width;
+  -webkit-text-stroke-color: white;
+}
+// ANIMATIONS
+@keyframes zoomIn {
+  from { transform: scale(0, 0); }
+  to { transform: scale(1, 1); }
+}
+
+// CLASSES
+@media(min-width: 768px) {
+  body, .auth, .menu, .farm {
+    @include container;
+    @include flex-centerize(row, center, center);
+  }
+  // AUTHENTICATION
+  .authZone, .authOuterBg {
+    @include flex-centerize(column, center, center);
+    height: 75vh;
+    width: 100vh;
+  }
+  .authButton {
+    margin: 0 2.5vh;
+    opacity: 0.9;
+    width: 20vh;
+  }
+  .authButton:hover {
+    cursor: pointer;
+    opacity: 1;
+    transform: scale(1.1, 1.1);
+  }
+  .authForm {
+    @include flex-centerize(column, center, space-between);
+    height: 50vh;
+    position: absolute;
+    width: 95vh;
+    z-index: 2;
+  }
+  .authFormInputArea {
+    @include flex-centerize(column, space-between, center);
+    height: 10vh;
+  }
+  .authFormInputAndText {
+    @include flex-centerize(row, center, space-between);
+    height: 5vh;
+    padding: 3.5vh;
+  }
+  .authInnerBg {
+    height: 65vh;
+    position: absolute;
+    width: 90vh;
+    z-index: 1;
+  }
+  .authLoginText {
+    @include font(#5A8732, 5vh, none);
+    @include font-border(0.2vh);
+  }
+  .authTextContainer {
+    @include flex-centerize(row, none, none);
+    width: 20vh;
+  }
+  .authInputField {
+    width: 50vh;
+  }
+  .authInputBg {
+    position: absolute;
+    width: 50%;
+    z-index: 0;
+  }
+  .authInput {
+    @include font(white, 3vh, none);
+    background: transparent;
+    border: none;
+    height: 5vh;
+    padding: 0 1.5vh;
+    position: absolute;
+    width: 46%;
+    z-index: 1;
+  }
+  .authInput:focus {
+    outline: none;
+  }
+  .authInputText, .authInputTextBorder, .authText, .authTextBorder, .menuText, .menuTextBorder {
+    position: absolute;
+  }
+  .authForgotPassword {
+    margin: auto;
+    padding: 3vh;
+    text-align: right;
+    width: 25%;
+  }
+  .authForgotText {
+    @include font(#21969B, 2vh, none);
+    opacity: 0.9;
+    position: absolute;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    width: 20vh;
+  }
+  .authForgotText:hover {
+    cursor: pointer;
+    font-size: 2.2vh; 
+    opacity: 1;
+  }
+  .authInputText {
+    @include font(#5A8732, 2.5vh, none);
+    z-index: 1;
+  }
+  .authInputTextBorder {
+    @include font(white, 2.5vh, none);
+    @include font-border(0.5vh);
+  }
+  .authText {
+    @include font(#5A8732, 5vh, none);
+    z-index: 1;
+  }
+  .authTextBorder {
+    @include font(white, 5vh, none);
+    @include font-border(0.5vh);
+  }
+  // ACHIEVEMENT & INVENTORY & MARKET
+  .auth, .menu {
+    background: rgba(0, 0, 0, 0.3);
+    position: absolute;
+  }
+  .menuAnimation {
+    @include flex-centerize(row, center, center);
+    animation: zoomIn 0.5s;
+    height: 100%;
+    width: 100%;
+  }
+  .menuBackground, .menuInside {
+    height: 60vh;
+    position: absolute;
+    width: 102vh;
+  }
+  .menuClose {
+    margin-top: 5vh;
+    margin-right: -3vh;
+    position: absolute;
+    right: 0px;
+    width: 11vh;
+  }
+  .menuTop {
+    @include flex-centerize(row, center, center);
+  }
+  
+  .menuText {
+    @include font(#5A8732, 7vh, none);
+    z-index: 1;
+  }
+  .menuTextBorder {
+    @include font(white, 7vh, none);
+    @include font-border(1.25vh);
+  }
+  // FARM
+  .farmZone {
+    @include flex-centerize(column, center, space-between);
+    height: 100%;
+  }
+  .farmBar {
+    @include flex-centerize(row, center, space-between);
+  }
+  .farmExpBar, .farmCoinBar {
+    padding: 2% 4%;
+    width: 17%;
+  }
+  .farmExpBar {
+    width: 20%;
+  }
+  .farmButtonArea {
+    @include flex-centerize(row, center, center);
+  }
+  .farmButton {
+    opacity: 0.9;
+  }
+  .farmButton:hover { 
+    cursor: pointer;
+    opacity: 1;
+    transform: scale(1.1, 1.1);
+  }
+  .farmLaneZone { 
+    @include flex-centerize(row, center, space-around);
+    padding: 5% 0 15% 0;
+  }
+  .farmLane {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-gap: 3px;
+  }
+  // LOADING
+  .loading {
+    @include container;
+    @include flex-centerize(column, center, center);
+    background: linear-gradient(#7AA940 80%, #939A20);
+    height: 100vh;
+  }
+  .loadingBar {
+    background: white;
+    border-radius: 1vw;
+    height: 6%;
+    margin-top: -5%;
+    overflow: hidden;
+    padding: 0.5vw;
+    text-overflow: ellipsis;
+    width: 55%;
+  }
+}
